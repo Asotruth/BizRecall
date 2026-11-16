@@ -1,0 +1,1 @@
+import Workspace from "@/components/dashboard-workspace";export default async function Section({params}:{params:Promise<{section:string}>}){const {section}=await params;return <Workspace section={section}/ >}

@@ -1,7 +1,19 @@
 # BizRecall
 
-A customer rebooking and retention platform for small and medium businesses.
+Customer retention and rebooking platform for small and medium businesses.
 
-The application is built with Next.js, TypeScript, Tailwind CSS, shadcn-style UI components, Supabase and Cloudflare Workers.
+## Technology
+- Next.js + TypeScript
+- Tailwind CSS v4 and shadcn-inspired components
+- Supabase PostgreSQL, Auth and Storage
+- Cloudflare Workers using OpenNext
 
-See `docs/SETUP.md` for beginner-friendly setup instructions.
+## Run locally
+1. Copy `.env.example` to `.env.local` and add your Supabase project URL and publishable key.
+2. Run `npm install`.
+3. Run `npm run dev` and visit http://localhost:3000.
+
+See [docs/SETUP.md](docs/SETUP.md) for beginner instructions.
+
+## Important
+Messaging screens are prepared, but live delivery is not activated until WhatsApp, SMS and email provider credentials, approved templates and customer consent are configured. Never commit environment files or expose Supabase secret/service-role keys.
