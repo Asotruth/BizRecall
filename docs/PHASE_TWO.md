@@ -1,26 +1,16 @@
-# BizRecall Phase Two
+# BizRecall phase two implementation
 
-## Included application areas
-- Existing business dashboard remains under /dashboard.
-- Customer discovery marketplace: /portal, /portal/search, /portal/business/[slug], /portal/favorites.
-- Platform administration: /platform-admin, /platform-admin/businesses, /platform-admin/users, /platform-admin/audit-logs, /platform-admin/settings.
-- Supabase Auth callback: /auth/callback.
-- Responsive shared sign-up and login interface.
+Pages from the supplied Frame 11–19 PDF are mapped as follows:
+- Frame 11: /dashboard/analytics
+- Frame 12: /dashboard/profile
+- Frame 13: /dashboard/billing
+- Frame 14: /portal
+- Frame 15: /portal/business/[slug], including booking request form
+- Frame 16: /portal/reminders
+- Frame 17: /platform-admin
+- Frame 18: /platform-admin/operations
+- Frame 19: /signup and /login
 
-## Supabase additions
-Migration phase_two_marketplace_roles_and_profiles adds user profiles, role labels, marketplace categories, favourites, enquiries, audit events and platform settings. It also creates a private avatar bucket and per-user object policies.
+Uses the existing Next.js 15, TypeScript, Tailwind CSS 4 and Supabase setup. Existing first-phase routes are retained. Database migration adds business profile fields, subscription/invoice records, verification reviews, customer complaints and customer profile linkage.
 
-## Security
-- New profiles default to the customer role. Do not allow a user to promote themselves to platform_admin through public signup.
-- Assign a first trusted platform administrator from the Supabase SQL editor after checking identity: update public.user_profiles set role='platform_admin' where id='<AUTH_USER_UUID>';
-- The admin interface is not a substitute for row-level security. Verify table policies before live launch.
-- Marketplace vendors are public only while is_listed is true.
-
-## Not yet complete
-- Outbound WhatsApp, SMS and email provider integration.
-- Payment processing, subscription management, reviews, enquiry alerts and advanced marketplace search.
-- Exact Figma frame parity and exact favicon export. Design retrieval hit the connected Figma plan's request limit during this implementation; these are foundations, not pixel-perfect copies.
-- Production security review and end-to-end tests.
-
-## Local setup
-Run npm install and npm run dev. Configure .env.local using .env.example.
+Note: payment execution, WhatsApp/SMS/email provider delivery, customer-to-business account linking workflow and live production verification still require provider credentials, tested server routes and final QA. Subscription figures are sourced from database records and are not simulated.
