@@ -1,2 +1,0 @@
-import {createClient} from "@/lib/supabase/server";import {Heading} from "@/components/dashboard-shell";import {BusinessTable} from "@/components/platform-admin-tables";
-export default async function Businesses(){const s=await createClient();const {data,error}=await s.from("vendors").select("id,business_name,slug,category,city,is_listed,created_at").order("created_at",{ascending:false}).limit(100);return <><Heading title="Businesses" description="Review registered businesses and their marketplace visibility."/><BusinessTable initial={data||[]} error={error?.message}/></>}
